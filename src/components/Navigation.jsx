@@ -12,12 +12,12 @@ const Navigation = () => {
   return (
     <Navbar style={{ backgroundColor: 'red' }} variant="dark" expand="lg" sticky="top">
       <Container>
-        <Navbar.Brand as={Link} to="/" className="d-flex align-items-center fw-bold text-white">
+        <Navbar.Brand as={Link} to="/BookMyShow" className="d-flex align-items-center fw-bold text-white">
           <Image  src="/logobms.png" alt="Logo" width={70} height={50}  className="me-2" /> BookMyShow  </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-          <Nav.Link as={Link} to="/" className="text-white">Home</Nav.Link>
+          <Nav.Link as={Link} to="/BookMyShow" className="text-white">Home</Nav.Link>
             <Nav.Link as={Link} to="/movies" className="text-white">Movies</Nav.Link>
             <Nav.Link as={Link} to="/events" className="text-white">Events</Nav.Link>
             <Nav.Link as={Link} to="/sports" className="text-white">Sports</Nav.Link>
