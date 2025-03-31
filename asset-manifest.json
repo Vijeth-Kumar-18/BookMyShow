@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/BookMyShow/home/static/css/main.0cb9b4db.css",
-    "main.js": "/BookMyShow/home/static/js/main.997828ca.js",
-    "static/js/453.3588fdd8.chunk.js": "/BookMyShow/home/static/js/453.3588fdd8.chunk.js",
-    "index.html": "/BookMyShow/home/index.html",
-    "main.0cb9b4db.css.map": "/BookMyShow/home/static/css/main.0cb9b4db.css.map",
-    "main.997828ca.js.map": "/BookMyShow/home/static/js/main.997828ca.js.map",
-    "453.3588fdd8.chunk.js.map": "/BookMyShow/home/static/js/453.3588fdd8.chunk.js.map"
+    "main.css": "/BookMyShow/static/css/main.0cb9b4db.css",
+    "main.js": "/BookMyShow/static/js/main.195e8aa0.js",
+    "static/js/453.3588fdd8.chunk.js": "/BookMyShow/static/js/453.3588fdd8.chunk.js",
+    "index.html": "/BookMyShow/index.html",
+    "main.0cb9b4db.css.map": "/BookMyShow/static/css/main.0cb9b4db.css.map",
+    "main.195e8aa0.js.map": "/BookMyShow/static/js/main.195e8aa0.js.map",
+    "453.3588fdd8.chunk.js.map": "/BookMyShow/static/js/453.3588fdd8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0cb9b4db.css",
-    "static/js/main.997828ca.js"
+    "static/js/main.195e8aa0.js"
   ]
 }
