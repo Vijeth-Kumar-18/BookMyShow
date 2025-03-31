@@ -1,6 +1,10 @@
 # BookMyShow Clone
 
-BookMyShow Clone is a web application built using React and Bootstrap that mimics the functionalities and design of the original BookMyShow platform. It provides a seamless experience for users to browse and book tickets for movies, events, and sports.
+BookMyShow-2.0 is a web application built using **React.js** and **Bootstrap** that closely mimics the design and functionalities of the original BookMyShow platform. The goal is to create a visually appealing and responsive web application that allows users to browse and book tickets for movies, events, and sports.
+
+## Tech Stack
+- **Frontend**: React.js
+- **Styling**: Bootstrap
 
 ## Features
 
@@ -37,6 +41,13 @@ Ensure you have the following installed on your system:
    ```bash
    npm install react-bootstrap bootstrap
    ```
+
+   Install `react-router-dom`:
+   ```bash
+   npm install react-router-dom
+   ```
+
+   
    Add the Bootstrap CSS to your project by including the following line in `src/index.js`:
    ```javascript
    import 'bootstrap/dist/css/bootstrap.min.css';
@@ -45,8 +56,8 @@ Ensure you have the following installed on your system:
 3. **Clone the Repository**  
    If you are working with an existing repository, clone it instead:
    ```bash
-   git clone https://github.com/your-username/bookmyshow-clone.git
-   cd bookmyshow-clone
+   git clone https://github.com/Vijeth-Kumar-18/BookMyShow.git
+   cd BookMyShow
    ```
 
 4. **Install Project Dependencies**  
