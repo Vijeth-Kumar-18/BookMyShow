@@ -13,7 +13,7 @@ const Navigation = () => {
     <Navbar style={{ backgroundColor: 'red' }} variant="dark" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/BookMyShow" className="d-flex align-items-center fw-bold text-white">
-          <Image  src="/logobms.png" alt="Logo" width={70} height={50}  className="me-2" /> BookMyShow  </Navbar.Brand>
+          <Image  src={`${process.env.PUBLIC_URL}/logobms.png`} alt="Logo" width={70} height={50}  className="me-2" /> BookMyShow  </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

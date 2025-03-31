@@ -8,6 +8,7 @@ const Booking = () => {
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [selectedTheater, setSelectedTheater] = useState(null); // State for selected theater
 
   const movie = {
     id: parseInt(id || "1"),
@@ -15,7 +16,6 @@ const Booking = () => {
     image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgALKguD_9A2j_VqHs-4hUgW67WaK7kfHXGG23F14OKvEFG0BHaIYCSEZf2tvdJSxJdvF96u_I7oUMq-RcjXtG0TnlVwpzBNzMg1dk6Whlg5AwTKiRE13kImO-hgnKaN41RXQ_K7mOXNR-BlEqSCNZO4qrZjltRU9DNcWh26sXtdT3ccgU-LHGmy9RhnPA/s1280/1.png",
     duration: "2h 46m",
   };
-
 
   const dates = ["2024-03-15", "2024-03-16", "2024-03-17"];
   const times = ["10:00 AM", "2:30 PM", "6:00 PM", "9:30 PM"];
@@ -43,18 +43,23 @@ const Booking = () => {
     );
   };
 
+  const handleTheaterClick = (theater) => {
+    setSelectedTheater(theater); // Set the selected theater
+  };
+
   return (
-    <Container className="py-5">
+    <Container className="py-5 mt-5">
       <Row>
-        <Col md={8}>
+        {/* Movie Details and Seat Selection */}
+        <Col lg={8}>
           <Card className="mb-4">
             <Card.Body>
-              <div className="d-flex mb-4">
+              <div className="d-flex flex-column flex-md-row mb-4">
                 <img 
                   src={movie.image} 
                   alt={movie.title}
                   style={{ width: '100px', height: '150px', objectFit: 'cover' }}
-                  className="rounded me-4"
+                  className="rounded me-4 mb-3 mb-md-0"
                 />
                 <div>
                   <h2>{movie.title}</h2>
@@ -66,7 +71,7 @@ const Booking = () => {
               </div>
 
               <h5 className="mb-3">Select Date</h5>
-              <div className="d-flex gap-2 mb-4">
+              <div className="d-flex gap-2 mb-4 flex-wrap">
                 {dates.map(date => (
                   <Button
                     key={date}
@@ -95,24 +100,18 @@ const Booking = () => {
 
               <h5 className="mb-3">Select Theater</h5>
               {theaters.map(theater => (
-                <Card key={theater.id} className="mb-3">
+                <Card 
+                  key={theater.id} 
+                  className={`mb-3 ${selectedTheater?.id === theater.id ? 'border-danger' : ''}`} // Highlight selected theater
+                  onClick={() => handleTheaterClick(theater)} // Handle theater selection
+                  style={{ cursor: 'pointer' }}
+                >
                   <Card.Body>
                     <h6>{theater.name}</h6>
                     <p className="text-muted mb-2">
                       <MapPin size={16} className="me-1" />
                       {theater.location}
                     </p>
-                    <div className="d-flex gap-2">
-                      {times.map(time => (
-                        <Button
-                          key={time}
-                          variant="outline-dark"
-                          size="sm"
-                        >
-                          {time}
-                        </Button>
-                      ))}
-                    </div>
                   </Card.Body>
                 </Card>
               ))}
@@ -122,29 +121,32 @@ const Booking = () => {
                 <div className="bg-dark p-3 mb-4 rounded">
                   <p className="text-white mb-0">SCREEN</p>
                 </div>
-                {seats.map((row, i) => (
-                  <div key={i} className="mb-2">
-                    {row.map(seat => (
-                      <Button
-                        key={seat}
-                        variant={selectedSeats.includes(seat) ? "danger" : "outline-secondary"}
-                        size="sm"
-                        className="m-1"
-                        style={{ width: '40px' }}
-                        onClick={() => handleSeatClick(seat)}
-                      >
-                        {seat}
-                      </Button>
-                    ))}
-                  </div>
-                ))}
+                <div className="d-flex flex-column align-items-center">
+                  {seats.map((row, i) => (
+                    <div key={i} className="d-flex flex-wrap justify-content-center mb-2">
+                      {row.map(seat => (
+                        <Button
+                          key={seat}
+                          variant={selectedSeats.includes(seat) ? "danger" : "outline-secondary"}
+                          size="sm"
+                          className="m-1"
+                          style={{ width: '40px' }}
+                          onClick={() => handleSeatClick(seat)}
+                        >
+                          {seat}
+                        </Button>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             </Card.Body>
           </Card>
         </Col>
 
-        <Col md={4}>
-          <Card className="sticky-top" style={{ top: '20px' }}>
+        {/* Booking Summary */}
+        <Col lg={4}>
+          <Card className="sticky-top" style={{ top: '80px' }}>
             <Card.Body>
               <h4 className="mb-4">Booking Summary</h4>
               <div className="mb-3">
@@ -156,18 +158,22 @@ const Booking = () => {
                 <h6>{selectedTime || 'Not selected'}</h6>
               </div>
               <div className="mb-3">
+                <p className="mb-1">Selected Theater:</p>
+                <h6>{selectedTheater?.name || 'Not selected'}</h6>
+              </div>
+              <div className="mb-3">
                 <p className="mb-1">Selected Seats ({selectedSeats.length}):</p>
                 <h6>{selectedSeats.join(', ') || 'No seats selected'}</h6>
               </div>
               <div className="mb-4">
                 <p className="mb-1">Total Amount:</p>
-                <h4>${selectedSeats.length * 12}</h4>
+                <h4>₹{selectedSeats.length * 500}</h4>
               </div>
               <Button 
                 variant="danger" 
                 size="lg" 
                 className="w-100"
-                disabled={!selectedDate || !selectedTime || selectedSeats.length === 0}
+                disabled={!selectedDate || !selectedTime || !selectedTheater || selectedSeats.length === 0}
               >
                 Proceed to Payment
               </Button>
